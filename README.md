@@ -24,7 +24,6 @@
 - docs/ → Step-by-step guides
 - scripts/ → Security audit scripts
 - README.md → This file
-- LICENSE → License
 
 ---
 
