@@ -1,6 +1,5 @@
 #!/bin/bash
-# **Ultimate OPSEC** Hook Script for Qubes OS
-# Version: 1.0
+# Ultimate OPSEC Hook Script for Qubes OS
 # Author: CySecKev
 #
 # Enhances operational security for label-marked VMs.
@@ -42,7 +41,7 @@ for VM_NAME in $VM_LIST; do
         continue
     fi
 
-    # --- 3a️⃣ MAC randomization ---
+    # --- MAC randomization ---
     NETVM=$(qvm-prefs "$VM_NAME" netvm 2>/dev/null)
     if [[ -n "$NETVM" ]]; then
         NEW_MAC=$(generate_unique_mac "$NETVM")
@@ -52,11 +51,11 @@ for VM_NAME in $VM_LIST; do
     fi
     qvm-prefs "$VM_NAME" mac "$NEW_MAC" 2>/dev/null || true
 
-    # --- 3b️⃣ Disable IPv6 ---
+    # --- Disable IPv6 ---
     qrexec-run "$VM_NAME" "sudo sysctl -w net.ipv6.conf.all.disable_ipv6=1" 2>/dev/null || true
     qrexec-run "$VM_NAME" "sudo sysctl -w net.ipv6.conf.default.disable_ipv6=1" 2>/dev/null || true
 
-    # --- 3c️⃣ Dynamic DNS ---
+    # --- Dynamic DNS ---
     if [[ -n "$NETVM" ]]; then
         NETVM_IPS=$(qvm-prefs "$NETVM" ip 2>/dev/null | awk '{print $1}' | grep -E '^(10\.|172\.|192\.168\.)')
         ACTIVE_IP=""

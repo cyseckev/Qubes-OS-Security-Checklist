@@ -30,7 +30,7 @@
 
 ## Updates 
 
-# 🛠️ Added Script: `ultimate_opsec.sh`
+## 🛠️ Added Script: `ultimate_opsec.sh`
 
 **Purpose:**  
 Enhances Qubes OS operational security by automatically randomizing MAC addresses, disabling IPv6, and dynamically setting DNS to the currently active NetVM.  
